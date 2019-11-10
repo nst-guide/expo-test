@@ -1,18 +1,15 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 
-
-class SettingsScreen extends React.Component {
+class SignInScreen extends React.Component {
   static navigationOptions = {
-    drawerLabel: "Settings",
+    drawerLabel: "Settings"
     // drawerIcon: ({ tintColor }) => (
     //   <Image
     //     source={require("./notif-icon.png")}
     //     style={[styles.icon, { tintColor: tintColor }]}
     //   />
-
-
     // )
   };
 
@@ -31,4 +28,4 @@ class SettingsScreen extends React.Component {
     );
   }
 }
-export default SettingsScreen;
+export default SignInScreen;

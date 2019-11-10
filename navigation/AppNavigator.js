@@ -1,12 +1,52 @@
 import React from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {
+  SafeAreaView,
+  createAppContainer,
+  createDrawerNavigator,
+} from "react-navigation";
+import { ScrollView } from 'react-native';
+import { Drawer } from "react-native-paper";
 
-import MainTabNavigator from './MainTabNavigator';
+import HomeScreen from "../screens/HomeScreen";
+import RoutesScreen from "../screens/RoutesScreen";
+import SignInScreen from "../screens/SignInScreen";
+import SettingsScreen from '../screens/SettingsScreen';
 
-export default createAppContainer(
-  createSwitchNavigator({
-    // You could add another route here for authentication.
-    // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-    Main: MainTabNavigator,
-  })
+const Menu = createDrawerNavigator(
+  {
+    Home: { screen: HomeScreen },
+    Settings: { screen: SettingsScreen },
+    SignIn: { screen: SignInScreen },
+    Routes: { screen: RoutesScreen }
+  },
+  {
+    contentComponent: props => (
+      <ScrollView>
+        <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
+          <Drawer.Item
+            label="Map"
+            active="true"
+            onPress={() => props.navigation.navigate("Home")}
+          />
+          <Drawer.Item
+            label="Settings"
+            active="true"
+            onPress={() => props.navigation.navigate("Settings")}
+          />
+          <Drawer.Item
+            label="SignIn"
+            active="true"
+            onPress={() => props.navigation.navigate("SignIn")}
+          />
+          <Drawer.Item
+            label="Routes"
+            active="true"
+            onPress={() => props.navigation.navigate("Routes")}
+          />
+        </SafeAreaView>
+      </ScrollView>
+    )
+  }
 );
+
+export default createAppContainer(Menu);
