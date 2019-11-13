@@ -4,16 +4,18 @@ import { SafeAreaView, createDrawerNavigator } from "react-navigation";
 import { ScrollView } from "react-native";
 import { Drawer } from "react-native-paper";
 
-import HomeScreen from "../screens/HomeScreen";
-import RoutesScreen from "../screens/RoutesScreen";
-import SignInScreen from "../screens/SignInScreen";
-import SettingsScreen from "../screens/SettingsScreen";
+import {
+  HomeScreen,
+  RoutesScreen,
+  AuthStartScreen,
+  SettingsScreen,
+} from '../screens'
 
 const MenuDrawerNavigator = createDrawerNavigator(
   {
     Home: { screen: HomeScreen },
     Settings: { screen: SettingsScreen },
-    SignIn: { screen: SignInScreen },
+    AuthStart: { screen: AuthStartScreen },
     Routes: { screen: RoutesScreen }
   },
   {
@@ -27,6 +29,12 @@ const MenuDrawerNavigator = createDrawerNavigator(
             onPress={() => props.navigation.navigate("Home")}
           />
           <Drawer.Item
+            icon="route"
+            label="Routes"
+            active="true"
+            onPress={() => props.navigation.navigate("Routes")}
+          />
+          <Drawer.Item
             icon="cog"
             label="Settings"
             active="true"
@@ -36,13 +44,7 @@ const MenuDrawerNavigator = createDrawerNavigator(
             icon="sign-in-alt"
             label="Sign In"
             active="true"
-            onPress={() => props.navigation.navigate("SignIn")}
-          />
-          <Drawer.Item
-            icon="route"
-            label="Routes"
-            active="true"
-            onPress={() => props.navigation.navigate("Routes")}
+            onPress={() => props.navigation.navigate("AuthStart")}
           />
         </SafeAreaView>
       </ScrollView>

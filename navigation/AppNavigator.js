@@ -1,25 +1,16 @@
-import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 
 import MenuDrawerNavigator from './MenuDrawerNavigator';
-
-import SignInScreen from "../screens/SignInScreen"
-import AuthLoadingScreen from "../screens/AuthLoadingScreen"
-
-const AuthStack = createStackNavigator({ SignIn: SignInScreen });
+import AuthNavigator from "./AuthNavigator"
 
 export default createAppContainer(
   createSwitchNavigator(
     {
-      AuthLoading: AuthLoadingScreen,
       App: MenuDrawerNavigator,
-      Auth: AuthStack,
+      Auth: AuthNavigator,
     },
     {
-      initialRouteName: 'AuthLoading',
+      initialRouteName: 'App',
     }
   )
 );
-
-// export default createAppContainer(MenuDrawerNavigator);
