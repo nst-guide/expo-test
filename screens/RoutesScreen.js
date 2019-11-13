@@ -1,16 +1,18 @@
 import React from "react";
 import { View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+
 
 class RoutesScreen extends React.Component {
   static navigationOptions = {
-    drawerLabel: "Settings"
-    // drawerIcon: ({ tintColor }) => (
-    //   <Image
-    //     source={require("./notif-icon.png")}
-    //     style={[styles.icon, { tintColor: tintColor }]}
-    //   />
-    // )
+    drawerLabel: "Settings",
+    drawerIcon: ({ tintColor }) => (
+      <FontAwesome5
+        name='cog'
+        color={tintColor}
+      />
+    )
   };
 
   render() {
@@ -18,12 +20,12 @@ class RoutesScreen extends React.Component {
       <View>
         <Appbar.Header>
           <Appbar.Action
-            icon="menu"
+            icon="arrow-left"
             onPress={() => this.props.navigation.toggleDrawer()}
           />
-          <Appbar.Content title="First Page" />
+          <Appbar.Content title="Routes" />
         </Appbar.Header>
-        <Text>First Page</Text>
+        <Text>User-created routes</Text>
       </View>
     );
   }

@@ -1,19 +1,12 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
-
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: "Settings",
-    // drawerIcon: ({ tintColor }) => (
-    //   <Image
-    //     source={require("./notif-icon.png")}
-    //     style={[styles.icon, { tintColor: tintColor }]}
-    //   />
-
-
-    // )
+    drawerIcon: ({ tintColor }) => <FontAwesome5 name="cog" color={tintColor} />
   };
 
   render() {
@@ -21,12 +14,12 @@ class SettingsScreen extends React.Component {
       <View>
         <Appbar.Header>
           <Appbar.Action
-            icon="menu"
+            icon="arrow-left"
             onPress={() => this.props.navigation.toggleDrawer()}
           />
-          <Appbar.Content title="First Page" />
+          <Appbar.Content title="Settings" />
         </Appbar.Header>
-        <Text>First Page</Text>
+        <Text>App settings</Text>
       </View>
     );
   }
