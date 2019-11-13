@@ -10,22 +10,22 @@ import { theme } from "../core/theme";
 import {
   emailValidator,
   passwordValidator,
-  nameValidator
+  usernameValidator
 } from "../core/utils";
 
 
 const RegisterScreen = ({ navigation }) => {
-  const [name, setName] = useState({ value: "", error: "" });
+  const [username, setUsername] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
 
   const _onSignUpPressed = () => {
-    const nameError = nameValidator(name.value);
+    const usernameError = usernameValidator(username.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
 
-    if (emailError || passwordError || nameError) {
-      setName({ ...name, error: nameError });
+    if (emailError || passwordError || usernameError) {
+      setUsername({ ...username, error: usernameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       return;
@@ -43,12 +43,12 @@ const RegisterScreen = ({ navigation }) => {
       <Header>Create Account</Header>
 
       <TextInput
-        label="Name"
+        label="Username"
         returnKeyType="next"
-        value={name.value}
-        onChangeText={text => setName({ value: text, error: "" })}
-        error={!!name.error}
-        errorText={name.error}
+        value={username.value}
+        onChangeText={text => setUsername({ value: text, error: "" })}
+        error={!!username.error}
+        errorText={username.error}
       />
 
       <TextInput

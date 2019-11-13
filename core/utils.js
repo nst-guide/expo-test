@@ -13,8 +13,8 @@ export const passwordValidator = (password) => {
   return '';
 };
 
-export const nameValidator = (name) => {
-  if (!name || name.length <= 0) return 'Name cannot be empty.';
+export const usernameValidator = (username) => {
+  if (!username || username.length <= 0) return 'Name cannot be empty.';
 
   return '';
 };
