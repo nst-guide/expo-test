@@ -12,6 +12,7 @@ import {
   passwordValidator,
   usernameValidator
 } from "../core/utils";
+import { User } from "../core/parse"
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -30,6 +31,18 @@ const RegisterScreen = ({ navigation }) => {
       setPassword({ ...password, error: passwordError });
       return;
     }
+
+    user = new User({username: username.value, email:email.value, password:password.value})
+    user.signUp().then((user) => {
+      console.log('successfully signed up')
+    }).catch((error) => {
+      // TODO: put server error into a separate box, not as part of the username error
+      // TODO: currently this gives error of "Warning: Can't perform a React state update on an unmounted component". To repro, try with existing username
+      setUsername({...username, error: error.message})
+      setEmail(email)
+      setPassword(password)
+      return;
+    })
 
     navigation.navigate("Home");
   };
