@@ -7,18 +7,18 @@ import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import BackButton from "../components/BackButton";
 import { theme } from "../core/theme";
-import { emailValidator, passwordValidator } from "../core/utils";
+import { usernameValidator, passwordValidator } from "../core/utils";
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState({ value: "", error: "" });
+  const [username, setusername] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
 
   const _onLoginPressed = () => {
-    const emailError = emailValidator(email.value);
+    const usernameError = usernameValidator(username.value);
     const passwordError = passwordValidator(password.value);
 
-    if (emailError || passwordError) {
-      setEmail({ ...email, error: emailError });
+    if (usernameError || passwordError) {
+      setusername({ ...username, error: usernameError });
       setPassword({ ...password, error: passwordError });
       return;
     }
@@ -35,16 +35,13 @@ const LoginScreen = ({ navigation }) => {
       <Header>Welcome back.</Header>
 
       <TextInput
-        label="Email"
+        label="Username"
         returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail({ value: text, error: "" })}
-        error={!!email.error}
-        errorText={email.error}
+        value={username.value}
+        onChangeText={text => setusername({ value: text, error: "" })}
+        error={!!username.error}
+        errorText={username.error}
         autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
       />
 
       <TextInput

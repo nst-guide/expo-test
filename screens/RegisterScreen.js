@@ -62,6 +62,7 @@ const RegisterScreen = ({ navigation }) => {
         onChangeText={text => setUsername({ value: text, error: "" })}
         error={!!username.error}
         errorText={username.error}
+        autoCapitalize="none"
       />
 
       <TextInput
