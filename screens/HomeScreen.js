@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { Map } from "../components/Map";
 import DrawerButton from "../components/DrawerButton";
 import AddContentButton from "../components/AddContentButton";
@@ -24,6 +24,13 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  map: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
