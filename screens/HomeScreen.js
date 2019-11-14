@@ -4,17 +4,32 @@ import { Map } from "../components/Map";
 import DrawerButton from "../components/DrawerButton";
 import AddContentButton from "../components/AddContentButton";
 import FindWaypointsButton from "../components/FindWaypointsButton";
-import { Portal, Provider } from "react-native-paper";
+import { FAB, Portal, Provider } from "react-native-paper";
+import ExpandingButton from "../components/ExpandingButton";
 
 // TODO: Debug why adding <Portal> stops the FontAwesome icons from working
 // I think you need to use <Portal> to get the FAB group to render at the right place on top of other objects
 export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      elevationCollapsed: true
+    };
+  }
+
+  toggleElevation() {
+    console.log('toggling elevation')
+    this.setState({ elevationCollapsed: !this.state.elevationCollapsed });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Map style={styles.map} />
         <DrawerButton onPress={() => this.props.navigation.toggleDrawer()} />
         <AddContentButton onPress={() => console.log("add content")} />
+
+        <FAB small style={styles.elevationFAB} icon="mountain" label="Elevation" onPress={() => this.toggleElevation()} />
         {/* <FindWaypointsButton
               onPress={() => console.log("Find waypoints")}
             /> */}
@@ -24,6 +39,12 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  elevationFAB: {
+    position: "absolute",
+    margin: 16,
+    left: 10,
+    bottom: 40
+  },
   map: {
     flex: 1,
     alignItems: "center",
