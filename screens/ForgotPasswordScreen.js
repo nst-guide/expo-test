@@ -35,7 +35,10 @@ const ForgotPasswordScreen = ({ navigation }) => {
         label="E-mail address"
         returnKeyType="done"
         value={email.value}
-        onChangeText={text => setEmail({ value: text, error: "" })}
+        onChangeText={text => {
+          const emailError = emailValidator(text);
+          setEmail({ value: text, error: emailError });
+        }}
         error={!!email.error}
         errorText={email.error}
         autoCapitalize="none"
